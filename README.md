@@ -1,9 +1,6 @@
 # DrawLib
 A simple draw library for gmod developpement
 
-## Screenshot
-![Screenshot](https://github.com/{user}/{project}/blob/master/Screenshot.png?raw=true)
-
 ## Setup
 ### Installation
 Take `drawlib.lua` and `drawlib_config.lua`, go in your lua project folder and put it. When you create a lua file, think about import the `drawlib.lua` file and if you want to use fonts, call `LoadFont()` function.
@@ -21,7 +18,7 @@ They function draw a outline box, `OutlineBox(x, y, width, height, color, border
 ##### Image and RotatedImage
 They function draw an image, `Image(x, y, width, height, material, color)` or a image with rotation `ImageRotated(x, y, width, height, rotation, material, color)`.
 ##### Text functions
-With they function, you can get a text size in function of the font `GetTextSize(text, font)` and draw a text `Text(text, font, x, y, color, xalign, yalign)`. See ![gmod text align wiki](https://wiki.facepunch.com/gmod/Enums/TEXT_ALIGN) for xalign and yalign.
+With they function, you can get a text size in function of the font `GetTextSize(text, font)` and draw a text `Text(text, font, x, y, color, xalign, yalign)`. See [gmod text align wiki](https://wiki.facepunch.com/gmod/Enums/TEXT_ALIGN) for xalign and yalign.
 Example :
 ```lua
 DrawLib.Text("Test", "DL25", 0, 0, DrawLib.SetColor("white"), TEXT_ALIGN_CENTER, TEXT_ALIGN_LEFT)
@@ -36,7 +33,7 @@ DrawLib.Texts(0, 0, TEXT_ALIGN_CENTER, TEXT_ALIGN_LEFT, {
 ```
 #### Config
 ##### Create font
-For create a font usable with texts drawing function, put an element in the list called `fonts`. Any element must have a name : for calling and a config : for size, weight and more. See ![gmod font wiki](https://wiki.facepunch.com/gmod/Structures/FontData) for the config. Here, mandatories parameters. For load them call `LoadFont()` function.
+For create a font usable with texts drawing function, put an element in the list called `fonts`. Any element must have a name : for calling and a config : for size, weight and more. See [gmod font wiki](https://wiki.facepunch.com/gmod/Structures/FontData) for the config. Here, mandatories parameters. For load them call `LoadFont()` function.
 _Tip for name : `name = [Your project initials][Font size]`._
 Example :
 ```lua
