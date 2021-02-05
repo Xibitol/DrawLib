@@ -40,7 +40,7 @@ Example :
 {name = "DL25", config = {font = "Arial", size = 25}}
 ```
 ##### Add a color
-For add a color usable with the `getColor()` function, put an element in the list called `colors`. Any element must have a name, for calling and a red, green, blue, alpha value.
+For add a color usable in color parameter of functions, put an element in the list called `colors`. Any element must have a name, for calling and a red, green, blue, alpha value.
 Example :
 ```lua
 {name = "white", r = 255, g = 255, b = 255, a = 255}
