@@ -3,9 +3,11 @@ local draw = draw
 local ipairs = ipairs
 local Color = Color
 local print = print
+include("drawlib_config.lua")
+local fonts = fonts
+local colors = colors
 
 fontLoaded = false
-include("drawlib_config.lua")
 module("DrawLib")
 
 ----- Create font -----
