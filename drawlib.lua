@@ -63,6 +63,23 @@ function BoxBorder(x, y, w, h, color, borderRadius, borderColor)
         Box(x, y, borderRadius, h, borderColor) -- RIGHT
     end
 end
+function RoundedBoxBorder(cornerRaduis, x, y, w, h, color, borderRadius, borderColor)
+    color = SetColor(color)
+    color.a = 255
+    border = SetColor(borderColor)
+    border.a = 255
+
+    if borderRadius == 0 and cornerRaduis == 0 then
+        Box(x, y, w, h, color)
+    elseif cornerRadius == 0 then
+        BoxBorder(x, y, w, h, color, borderRadius, borderColor)
+    elseif borderRadius == 0 then
+        RoundedBox(cornerRadius, x, y, w, h, color)
+    else
+        RoundedBox(cornerRaduis, x, y, w, h, borderColor)
+        RoundedBox(cornerRaduis, x+borderRadius, y+borderRadius, w-borderRadius*2, h-borderRadius*2, color)
+    end
+end
 
 function OutlineBox(x, y, w, h, color, borderRadius)
     if borderRadius == 0 then
