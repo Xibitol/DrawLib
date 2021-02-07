@@ -3,6 +3,7 @@ local draw = draw
 local ipairs = ipairs
 local Color = Color
 local print = print
+
 include("drawlib_config.lua")
 local fonts = fonts
 local colors = colors
@@ -27,7 +28,7 @@ TEXT_ALIGN_TOP = 3
 TEXT_ALIGN_BOTTOM = 4
 
 ----- Color function -----
-local function SetColor(color)
+function SetColor(color)
     for k,v in ipairs(colors) do
         if v.name == color then 
             return Color(v.r, v.g, v.b, v.a)
@@ -56,26 +57,10 @@ function BoxBorder(x, y, w, h, color, borderRadius, borderColor)
     else
         Box(x, y, w, h, color)
 
-        Box(x, y, w, borderRadius) -- UP
-        Box(x + w - borderRadius, y, borderRadius, h) -- LEFT
-        Box(x, y + h - borderRadius, w, borderRadius) -- DOWN
-        Box(x, y, borderRadius, h) -- RIGHT
-    end
-end
-function RoundedBoxBorder(cornerRaduis, x, y, w, h, color, borderRadius, borderColor)
-    if borderRadius == 0 and cornerRaduis == 0 then
-        Box(x, y, w, h, color)
-    elseif cornerRadius == 0 then
-        BoxBorder(x, y, w, h, color, borderRadius, borderColor)
-    elseif borderRadius == 0 then
-        RoundedBox(cornerRadius, x, y, w, h, color)
-    else
-        RoundedBox(x, y, w, h, color)
-
-        RoundedBox(x, y, w, borderRadius, borderColor) -- UP
-        RoundedBox(x + w - borderRadius, y, borderRadius, h, borderColor) -- LEFT
-        RoundedBox(x, y + h - borderRadius, w, borderRadius, borderColor) -- DOWN
-        RoundedBox(x, y, borderRadius, h, borderColor) -- RIGHT
+        Box(x+borderRadius, y, w-borderRadius*2, borderRadius, borderColor) -- UP
+        Box(x + w - borderRadius, y, borderRadius, h, borderColor) -- LEFT
+        Box(x+borderRadius, y + h - borderRadius, w-borderRadius*2, borderRadius, borderColor) -- DOWN
+        Box(x, y, borderRadius, h, borderColor) -- RIGHT
     end
 end
 
@@ -83,9 +68,9 @@ function OutlineBox(x, y, w, h, color, borderRadius)
     if borderRadius == 0 then
         return
     else
-        Box(x, y, w, borderRadius, color) -- UP
+        Box(x+borderRadius, y, w-borderRadius*2, borderRadius, color) -- UP
         Box(x + w - borderRadius, y, borderRadius, h, color) -- LEFT
-        Box(x, y + h - borderRadius, w, borderRadius, color) -- DOWN
+        Box(x+borderRadius, y + h - borderRadius, w-borderRadius*2, borderRadius, color) -- DOWN
         Box(x, y, borderRadius, h, color) -- RIGHT
     end
 end
